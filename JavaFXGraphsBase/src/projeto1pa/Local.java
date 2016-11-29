@@ -21,6 +21,7 @@ public class Local {
     }
     
     public String getNomeLocal(){
+        System.out.println("Test");
         return nomeLocal;
     }
 }
