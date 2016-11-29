@@ -45,7 +45,6 @@ public class MiniJogoImp<V, E> implements MiniJogo<V, E>{
     }
     
     public Vertex<V> getDestino(){
-        System.out.println("teste");
         return destino;
     }
     
