@@ -18,10 +18,10 @@ public interface MiniJogo<V, E> {
     
     public Vertex<V> insertVertex(V elem);
     
-    public Iterable<Edge<E, V>> encontrarCaminhoCurto();
-    
-    public Iterable<Edge<E, V>> encontrarCaminhoBarato();
-    
-    public Iterable<Edge<E, V>> encontrarCaminhoDeslocacao();
+//    public Iterable<Edge<E, V>> encontrarCaminhoCurto();
+//    
+//    public Iterable<Edge<E, V>> encontrarCaminhoBarato();
+//    
+//    public Iterable<Edge<E, V>> encontrarCaminhoDeslocacao();
     
 }

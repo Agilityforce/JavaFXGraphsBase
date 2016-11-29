@@ -7,6 +7,7 @@ package projeto1pa;
 
 import java.util.Iterator;
 import javafxgraphs.tad.Edge;
+import javafxgraphs.tad.Graph;
 import javafxgraphs.tad.GraphImpl;
 import javafxgraphs.tad.Vertex;
 
@@ -15,12 +16,12 @@ import javafxgraphs.tad.Vertex;
  * @author rmlai
  */
 public class MiniJogoImp<V, E> implements MiniJogo<V, E>{
-    private GraphImpl graph;
+    private Graph graph;
     private Vertex<V> origem, destino;
     private String tipoJogo;
 
-        public MiniJogoImp(GraphImpl graph, String tipoJogo) {
-        this.graph = graph;
+    public MiniJogoImp(String tipoJogo) {
+        this.graph = new GraphImpl();
         this.tipoJogo = tipoJogo;
         selecionarOrigemDestino();
     }
@@ -57,23 +58,22 @@ public class MiniJogoImp<V, E> implements MiniJogo<V, E>{
     public Vertex<V> insertVertex(V elem){
         return graph.insertVertex(elem);
     }
-
-    @Override
-    public Iterable<Edge<E, V>> encontrarCaminhoCurto() {
-        Iterable<Edge<E, V>> edges = graph.edges();
-        
-
-    }
-
-    @Override
-    public Iterable<Edge<E, V>> encontrarCaminhoBarato() {
-        
-    }
-
-    @Override
-    public Iterable<Edge<E, V>> encontrarCaminhoDeslocacao() {
-        
-    }
+    
+//    @Override
+//    public Iterable<Edge<E, V>> encontrarCaminhoCurto() {
+//        Iterable<Edge<E, V>> edges = graph.edges();
+//        
+//    }
+//
+//    @Override
+//    public Iterable<Edge<E, V>> encontrarCaminhoBarato() {
+//        
+//    }
+//
+//    @Override
+//    public Iterable<Edge<E, V>> encontrarCaminhoDeslocacao() {
+//        
+//    }
     
     
 

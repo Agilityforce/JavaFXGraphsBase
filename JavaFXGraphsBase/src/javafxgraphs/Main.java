@@ -18,6 +18,7 @@ import javafxgraphs.tad.Graph;
 import javafxgraphs.tad.GraphImpl;
 import javafxgraphs.ui.GraphDraw;
 import javafxgraphs.tad.Vertex;
+import projeto1pa.MiniJogoImp;
 
 /**
  *
@@ -40,6 +41,16 @@ public class Main extends Application {
         myG.insertEdge(vA, vB, new DummyType("AB2")); //second edge
         myG.insertEdge(vA, vC, new DummyType("AC"));
         myG.insertEdge(vA, vD, new DummyType("AD"));
+        
+        MiniJogoImp<DummyType, DummyType> miniJogo = new MiniJogoImp<>("quack");
+        
+        Vertex<DummyType> vA2 = miniJogo.insertVertex(new DummyType("A"));
+        Vertex<DummyType> vB2 = miniJogo.insertVertex(new DummyType("B"));
+        Vertex<DummyType> vC2 = miniJogo.insertVertex(new DummyType("C"));
+        Vertex<DummyType> vD2 = miniJogo.insertVertex(new DummyType("D"));
+        
+        System.out.println(miniJogo.getOrigem().toString());
+        System.out.println(miniJogo.getDestino().toString());
         
         //this should be moved to the implementing class
         for (Edge<DummyType, DummyType> edge : myG.edges()) {
