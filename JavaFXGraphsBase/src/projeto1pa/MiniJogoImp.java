@@ -5,39 +5,78 @@
  */
 package projeto1pa;
 
+import java.util.Iterator;
+import javafxgraphs.tad.Edge;
 import javafxgraphs.tad.GraphImpl;
+import javafxgraphs.tad.Vertex;
 
 /**
  *
  * @author rmlai
  */
-public class MiniJogoImp implements MiniJogo{
+public class MiniJogoImp<V, E> implements MiniJogo<V, E>{
     private GraphImpl graph;
-    private Local origem;
-    private Local destino;
-    private boolean estadoJogo;
+    private Vertex<V> origem, destino;
+    private String tipoJogo;
 
-    public MiniJogoImp(GraphImpl graph, Local origem, Local destino) {
+        public MiniJogoImp(GraphImpl graph, String tipoJogo) {
         this.graph = graph;
-        this.origem = origem;
-        this.destino = destino;
-        graph.insertVertex(origem);
-        graph.insertVertex(destino);
-        estadoJogo = false;
+        this.tipoJogo = tipoJogo;
+        selecionarOrigemDestino();
+    }
+        
+    private void selecionarOrigemDestino(){
+        Iterable<Vertex<V>> vertices = graph.vertices();
+        Iterator<Vertex<V>> iterator = vertices.iterator();
+        boolean first = true;
+        while(iterator.hasNext()){
+            if(first){
+                origem = iterator.next();
+                iterator.remove();
+                first = false;
+            }
+            destino = iterator.next();
+            break;
+        }
+    }
+    
+    public Vertex<V> getOrigem(){
+        return origem;
+    }
+    
+    public Vertex<V> getDestino(){
+        System.out.println("teste");
+        return destino;
     }
     
     @Override
-    public void comecarJogo() {
-        estadoJogo = true;
+    public Edge<E, V> insertEdge(V elem1, V elem2, E o){
+        return graph.insertEdge(elem1, elem2, o);
+    }
+    
+    @Override
+    public Vertex<V> insertVertex(V elem){
+        return graph.insertVertex(elem);
     }
 
     @Override
-    public boolean estadoJogo() {
-        return estadoJogo;
+    public Iterable<Edge<E, V>> encontrarCaminhoCurto() {
+        Iterable<Edge<E, V>> edges = graph.edges();
+        
+
     }
 
     @Override
-    public void acabarJogo() {
-        estadoJogo = false;
+    public Iterable<Edge<E, V>> encontrarCaminhoBarato() {
+        
     }
+
+    @Override
+    public Iterable<Edge<E, V>> encontrarCaminhoDeslocacao() {
+        
+    }
+    
+    
+
+    
 }
