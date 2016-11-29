@@ -5,16 +5,23 @@
  */
 package projeto1pa;
 
+import javafxgraphs.tad.Edge;
+import javafxgraphs.tad.Vertex;
+
 /**
  *
  * @author rmlai
  */
-public interface MiniJogo {
+public interface MiniJogo<V, E> {
     
-    public void comecarJogo();
+    public Edge<E, V> insertEdge(V elem1, V elem2, E o);
     
-    public boolean estadoJogo();
+    public Vertex<V> insertVertex(V elem);
     
-    public void acabarJogo();
+    public Iterable<Edge<E, V>> encontrarCaminhoCurto();
+    
+    public Iterable<Edge<E, V>> encontrarCaminhoBarato();
+    
+    public Iterable<Edge<E, V>> encontrarCaminhoDeslocacao();
     
 }
