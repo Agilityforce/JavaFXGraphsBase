@@ -25,14 +25,8 @@ public class MiniJogoImp<V, E> implements MiniJogo<V, E>{
         this.graph = new GraphImpl();
         this.strategy = strategy;
     }
-    
-    public MiniJogoImp(Graph graph, EstrategiaCalcularSolucao strategy){
-        this.graph = graph;
-        this.strategy = strategy;
-        selecionarOrigemDestino();
-    }
         
-    private void selecionarOrigemDestino(){
+    public void selecionarOrigemDestino(){
         Iterable<Vertex<V>> vertices = graph.vertices();
         Iterator<Vertex<V>> iterator = vertices.iterator();
         boolean first = true;
