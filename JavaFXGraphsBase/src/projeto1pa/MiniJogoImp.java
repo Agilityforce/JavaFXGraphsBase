@@ -16,16 +16,18 @@ import javafxgraphs.tad.Vertex;
  * @author rmlai
  */
 public class MiniJogoImp<V, E> implements MiniJogo<V, E>{
-    private Graph graph;
+    private Graph<V, E> graph;
     private Vertex<V> origem, destino;
     //private String tipoJogo;
     private EstrategiaCalcularSolucao strategy;
 
     public MiniJogoImp(EstrategiaCalcularSolucao strategy) {
-        this.graph = new GraphImpl();
+        graph = new GraphImpl();
         this.strategy = strategy;
     }
-        
+    
+    //Talvez por isto no main
+    /*
     public void selecionarOrigemDestino(){
         Iterable<Vertex<V>> vertices = graph.vertices();
         Iterator<Vertex<V>> iterator = vertices.iterator();
@@ -39,7 +41,7 @@ public class MiniJogoImp<V, E> implements MiniJogo<V, E>{
             destino = iterator.next();
             break;
         }
-    }
+    }*/
     
     public Vertex<V> getOrigem(){
         return origem;
