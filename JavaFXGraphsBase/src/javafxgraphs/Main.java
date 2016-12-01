@@ -18,6 +18,7 @@ import javafxgraphs.tad.Graph;
 import javafxgraphs.tad.GraphImpl;
 import javafxgraphs.ui.GraphDraw;
 import javafxgraphs.tad.Vertex;
+import projeto1pa.EstrategiaCalcularSolucao;
 import projeto1pa.MiniJogoImp;
 
 /**
@@ -42,7 +43,8 @@ public class Main extends Application {
         myG.insertEdge(vA, vC, new DummyType("AC"));
         myG.insertEdge(vA, vD, new DummyType("AD"));
         
-        MiniJogoImp<DummyType, DummyType> miniJogo = new MiniJogoImp<>("quack");
+        /*
+        MiniJogoImp<DummyType, DummyType> miniJogo = new MiniJogoImp<>();
         
         Vertex<DummyType> vA2 = miniJogo.insertVertex(new DummyType("A"));
         Vertex<DummyType> vB2 = miniJogo.insertVertex(new DummyType("B"));
@@ -51,6 +53,7 @@ public class Main extends Application {
         
         System.out.println(miniJogo.getOrigem().toString());
         System.out.println(miniJogo.getDestino().toString());
+        */
         
         //this should be moved to the implementing class
         for (Edge<DummyType, DummyType> edge : myG.edges()) {
