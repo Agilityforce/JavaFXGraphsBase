@@ -21,6 +21,7 @@ public class MiniJogoImp<V, E> implements MiniJogo<V, E>{
     //private String tipoJogo;
     private EstrategiaCalcularSolucao strategy;
 
+    //Construtor ta errado prq n se pode passar um interface, é abstrato
     public MiniJogoImp(EstrategiaCalcularSolucao strategy) {
         graph = new GraphImpl();
         this.strategy = strategy;
