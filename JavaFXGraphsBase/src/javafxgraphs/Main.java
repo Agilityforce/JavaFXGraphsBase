@@ -16,10 +16,11 @@ import javafxgraphs.modelo.DummyType;
 import javafxgraphs.tad.Edge;
 import javafxgraphs.tad.Graph;
 import javafxgraphs.tad.GraphImpl;
-import javafxgraphs.tad.InvalidEdgeException;
 import javafxgraphs.ui.GraphDraw;
 import javafxgraphs.tad.Vertex;
-import projeto1pa.EstrategiaCalcularSolucao;
+import projeto1pa.CalcularMaisBarato;
+import projeto1pa.Ligacao;
+import projeto1pa.Local;
 import projeto1pa.MiniJogoImp;
 
 /**
@@ -43,6 +44,20 @@ public class Main extends Application {
         myG.insertEdge(vA, vB, new DummyType("AB2")); //second edge
         myG.insertEdge(vA, vC, new DummyType("AC"));
         myG.insertEdge(vA, vD, new DummyType("AD"));
+        
+        
+        MiniJogoImp<Local, Ligacao> miniJogo = new MiniJogoImp(new CalcularMaisBarato());
+        
+        miniJogo.insertVertex(new Local("A"));
+        miniJogo.insertVertex(new Local("B"));
+        miniJogo.insertVertex(new Local("C"));
+        miniJogo.insertVertex(new Local("D"));
+        
+        miniJogo.selecionarOrigemDestino();
+        //miniJogo.calcularSolucao();
+        
+        System.out.println(miniJogo.getOrigem().element().toString());
+        System.out.println(miniJogo.getDestino().element().toString());
         
         /*
         MiniJogoImp<DummyType, DummyType> miniJogo = new MiniJogoImp<>();
