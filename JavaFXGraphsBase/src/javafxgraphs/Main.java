@@ -59,18 +59,6 @@ public class Main extends Application {
         System.out.println(miniJogo.getOrigem().element().toString());
         System.out.println(miniJogo.getDestino().element().toString());
         
-        /*
-        MiniJogoImp<DummyType, DummyType> miniJogo = new MiniJogoImp<>();
-        
-        Vertex<DummyType> vA2 = miniJogo.insertVertex(new DummyType("A"));
-        Vertex<DummyType> vB2 = miniJogo.insertVertex(new DummyType("B"));
-        Vertex<DummyType> vC2 = miniJogo.insertVertex(new DummyType("C"));
-        Vertex<DummyType> vD2 = miniJogo.insertVertex(new DummyType("D"));
-        
-        System.out.println(miniJogo.getOrigem().toString());
-        System.out.println(miniJogo.getDestino().toString());
-        */
-        
         //this should be moved to the implementing class
         for (Edge<DummyType, DummyType> edge : myG.edges()) {
             if(edge.element().getId().equalsIgnoreCase("AB")) {
