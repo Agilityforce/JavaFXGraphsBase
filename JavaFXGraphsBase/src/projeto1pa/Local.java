@@ -5,9 +5,6 @@
  */
 package projeto1pa;
 
-import javafxgraphs.tad.InvalidEdgeException;
-import javafxgraphs.tad.Vertex;
-
 /**
  *
  * @author rmlai
@@ -20,7 +17,8 @@ public class Local {
         this.nomeLocal = nomeLocal;
     }
     
-    public String getNomeLocal(){
+    @Override
+    public String toString(){
         return nomeLocal;
     }
 }

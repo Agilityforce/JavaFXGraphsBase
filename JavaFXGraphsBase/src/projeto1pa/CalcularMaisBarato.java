@@ -20,5 +20,6 @@ public class CalcularMaisBarato<E, V> implements EstrategiaCalcularSolucao<E, V>
         if(graph == null || origem == null || destino == null){
             return null;
         }
+        return null;
     }
 }

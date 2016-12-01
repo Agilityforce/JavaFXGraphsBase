@@ -21,5 +21,6 @@ public class CalcularMaisCurto<E, V> implements EstrategiaCalcularSolucao<E, V> 
             return null;
         }
         Iterable<Edge<E, V>> iterable = graph.incidentEdges(origem);
+        return null;
     }
 }

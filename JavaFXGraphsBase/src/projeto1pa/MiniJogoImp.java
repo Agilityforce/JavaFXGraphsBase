@@ -21,14 +21,13 @@ public class MiniJogoImp<V, E> implements MiniJogo<V, E>{
     //private String tipoJogo;
     private EstrategiaCalcularSolucao strategy;
 
-    //Construtor ta errado prq n se pode passar um interface, é abstrato
     public MiniJogoImp(EstrategiaCalcularSolucao strategy) {
         graph = new GraphImpl();
         this.strategy = strategy;
     }
     
     //Talvez por isto no main
-    /*
+    
     public void selecionarOrigemDestino(){
         Iterable<Vertex<V>> vertices = graph.vertices();
         Iterator<Vertex<V>> iterator = vertices.iterator();
@@ -42,7 +41,7 @@ public class MiniJogoImp<V, E> implements MiniJogo<V, E>{
             destino = iterator.next();
             break;
         }
-    }*/
+    }
     
     public Vertex<V> getOrigem(){
         return origem;

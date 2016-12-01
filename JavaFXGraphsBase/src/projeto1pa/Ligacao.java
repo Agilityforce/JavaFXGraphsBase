@@ -5,8 +5,6 @@
  */
 package projeto1pa;
 
-import javafxgraphs.tad.Edge;
-
 /**
  *
  * @author rmlai
@@ -15,23 +13,17 @@ public class Ligacao{
     
     private String TipoLigacao;
     private String nomeLigacao;
-    //private Local local1;
-    //private Local local2;
     private int distancia;
     private int preco;
 
     public Ligacao(String TipoLigacao, String nomeLigacao, int distancia, int preco) {
-        this.TipoLigacao = TipoLigacao;
-        //this.nomeLigacao = verificarNomeLigacao(local1, local2);        
+        this.TipoLigacao = TipoLigacao;      
         this.distancia = distancia;
         this.preco = preco;
     }
     
-//    private String verificarNomeLigacao(Local local1, Local local2){
-//        return local1.toString() + local2.toString();
-//    }
-        
-    public String getNomeLigacao(){
+    @Override
+    public String toString(){
         return nomeLigacao;
     }
 }

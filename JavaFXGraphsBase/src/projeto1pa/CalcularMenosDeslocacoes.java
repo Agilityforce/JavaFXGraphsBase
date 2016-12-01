@@ -20,5 +20,6 @@ public class CalcularMenosDeslocacoes<E, V> implements EstrategiaCalcularSolucao
         if(graph == null || origem == null || destino == null){
             return null;
         }
+        return null;
     }
 }

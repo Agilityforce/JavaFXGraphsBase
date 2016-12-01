@@ -16,6 +16,7 @@ import javafxgraphs.modelo.DummyType;
 import javafxgraphs.tad.Edge;
 import javafxgraphs.tad.Graph;
 import javafxgraphs.tad.GraphImpl;
+import javafxgraphs.tad.InvalidEdgeException;
 import javafxgraphs.ui.GraphDraw;
 import javafxgraphs.tad.Vertex;
 import projeto1pa.EstrategiaCalcularSolucao;
