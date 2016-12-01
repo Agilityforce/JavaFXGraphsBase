@@ -22,9 +22,9 @@ public class MiniJogoImp<V, E> implements MiniJogo<V, E>{
     private EstrategiaCalcularSolucao strategy;
 
     //Construtor ta errado prq n se pode passar um interface, é abstrato
-    public MiniJogoImp(EstrategiaCalcularSolucao strategy) {
+    public MiniJogoImp() {
         graph = new GraphImpl();
-        this.strategy = strategy;
+        this.strategy = new CalcularMaisBarato();
     }
     
     //Talvez por isto no main
@@ -64,6 +64,10 @@ public class MiniJogoImp<V, E> implements MiniJogo<V, E>{
     @Override
     public Vertex<V> insertVertex(V elem){
         return graph.insertVertex(elem);
+    }
+    
+    public Iterable<Edge<E, V>> calcularSolucao(){
+        return strategy.encontrarSolucao(graph, origem, destino);
     }
     
 //    @Override

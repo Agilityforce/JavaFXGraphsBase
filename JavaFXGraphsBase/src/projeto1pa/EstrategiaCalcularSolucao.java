@@ -6,6 +6,8 @@
 package projeto1pa;
 
 import javafxgraphs.tad.Edge;
+import javafxgraphs.tad.Graph;
+import javafxgraphs.tad.Vertex;
 
 /**
  *
@@ -13,5 +15,5 @@ import javafxgraphs.tad.Edge;
  */
 public interface EstrategiaCalcularSolucao<E, V> {
     
-    public Iterable<Edge<E, V>> encontrarSolucao();
+    public Iterable<Edge<E, V>> encontrarSolucao(Graph graph, Vertex<V> origem, Vertex<V> destino);
 }
