@@ -12,11 +12,11 @@ import javafxgraphs.tad.Vertex;
  *
  * @author rmlai
  */
-public interface MiniJogo<Local, Ligacao> {
+public interface MiniJogo<V, E> {
     
-    public Edge<Ligacao, Local> insertEdge(Local elem1, Local elem2, Ligacao o);
+    public Edge<E, V> insertEdge(V elem1, V elem2, E o);
     
-    public Vertex<Local> insertVertex(Local elem);
+    public Vertex<V> insertVertex(V elem);
     
 //    public Iterable<Edge<E, V>> encontrarCaminhoCurto();
 //    
