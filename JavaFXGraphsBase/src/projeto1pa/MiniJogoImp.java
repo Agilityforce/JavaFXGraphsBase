@@ -15,26 +15,23 @@ import javafxgraphs.tad.Vertex;
  *
  * @author rmlai
  */
-public class MiniJogoImp<Local, Ligacao> implements MiniJogo<Local, Ligacao>{
+public class MiniJogoImp implements MiniJogo<Local, Ligacao>{
     private Graph<Local, Ligacao> graph;
     private Vertex<Local> origem, destino;
     //private String tipoJogo;
     private EstrategiaCalcularSolucao strategy;
 
     public MiniJogoImp(EstrategiaCalcularSolucao strategy) {
-        this.graph = new GraphImpl();
+        graph = new GraphImpl();
         this.strategy = strategy;
     }
     
     public MiniJogoImp(EstrategiaCalcularSolucao strategy, Graph<Local, Ligacao> graph, Vertex<Local> origem, Vertex<Local> destino){
-        this.graph = graph;
         this.strategy = strategy;
+        this.graph = graph;
         this.origem = origem;
         this.destino = destino;
-    }
-    
-    //Talvez por isto no main
-    
+    }    
 
     public void selecionarOrigemDestino(){
         Iterable<Vertex<Local>> vertices = graph.vertices();
@@ -72,30 +69,5 @@ public class MiniJogoImp<Local, Ligacao> implements MiniJogo<Local, Ligacao>{
     public Vertex<Local> insertVertex(Local elem){
         return graph.insertVertex(elem);
 
-    }
-    
-//    public Iterable<Edge<Ligacao, Local>> calcularSolucao(){
-//        return strategy.encontrarSolucao(graph, origem, destino);
-//
-//    }
-    
-//    @Override
-//    public Iterable<Edge<E, V>> encontrarCaminhoCurto() {
-//        Iterable<Edge<E, V>> edges = graph.edges();
-//        
-//    }
-//
-//    @Override
-//    public Iterable<Edge<E, V>> encontrarCaminhoBarato() {
-//        
-//    }
-//
-//    @Override
-//    public Iterable<Edge<E, V>> encontrarCaminhoDeslocacao() {
-//        
-//    }
-    
-    
-
-    
+    }    
 }

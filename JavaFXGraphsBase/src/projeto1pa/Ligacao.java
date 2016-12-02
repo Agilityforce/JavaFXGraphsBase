@@ -11,13 +11,11 @@ package projeto1pa;
  */
 public class Ligacao{
     
-    private String TipoLigacao;
     private String nomeLigacao;
     private int distancia;
     private int preco;
 
-    public Ligacao(String TipoLigacao, String nomeLigacao, int distancia, int preco) {
-        this.TipoLigacao = TipoLigacao;      
+    public Ligacao(String nomeLigacao, int distancia, int preco) {
         this.distancia = distancia;
         this.preco = preco;
     }

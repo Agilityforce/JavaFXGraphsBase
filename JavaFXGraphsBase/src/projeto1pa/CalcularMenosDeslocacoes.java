@@ -13,7 +13,7 @@ import javafxgraphs.tad.Vertex;
  *
  * @author Rodrigo
  */
-public class CalcularMenosDeslocacoes<Ligacao, Local> implements EstrategiaCalcularSolucao<Ligacao, Local>{
+public class CalcularMenosDeslocacoes implements EstrategiaCalcularSolucao<Ligacao, Local>{
     
     @Override
     public Iterable<Edge<Ligacao, Local>> encontrarSolucao(Graph<Local, Ligacao> graph, Vertex<Local> origem, Vertex<Local> destino){
