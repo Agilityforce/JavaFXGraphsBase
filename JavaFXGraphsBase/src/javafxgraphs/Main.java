@@ -46,7 +46,7 @@ public class Main extends Application {
         myG.insertEdge(vA, vD, new DummyType("AD"));
         
         
-        MiniJogoImp<Local, Ligacao> miniJogo = new MiniJogoImp(new CalcularMaisBarato());
+        MiniJogoImp miniJogo = new MiniJogoImp(new CalcularMaisBarato());
         
         miniJogo.insertVertex(new Local("A"));
         miniJogo.insertVertex(new Local("B"));

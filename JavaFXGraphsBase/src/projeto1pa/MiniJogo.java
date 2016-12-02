@@ -14,14 +14,8 @@ import javafxgraphs.tad.Vertex;
  */
 public interface MiniJogo<V, E> {
     
-    public Edge<E, V> insertEdge(V elem1, V elem2, E o);
-    
+    public Edge<E, V> insertEdge(Local elem1, Local elem2, Ligacao o);
     public Vertex<V> insertVertex(V elem);
-    
-//    public Iterable<Edge<E, V>> encontrarCaminhoCurto();
-//    
-//    public Iterable<Edge<E, V>> encontrarCaminhoBarato();
-//    
-//    public Iterable<Edge<E, V>> encontrarCaminhoDeslocacao();
-    
+    public void setStrategy(EstrategiaCalcularSolucao strategy);
+    public Iterable<Edge<Ligacao, Local>> calcularSolucao();
 }
