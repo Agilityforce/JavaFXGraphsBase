@@ -15,22 +15,30 @@ import javafxgraphs.tad.Vertex;
  *
  * @author rmlai
  */
-public class MiniJogoImp<V, E> implements MiniJogo<V, E>{
-    private Graph<V, E> graph;
-    private Vertex<V> origem, destino;
+public class MiniJogoImp<Local, Ligacao> implements MiniJogo<Local, Ligacao>{
+    private Graph<Local, Ligacao> graph;
+    private Vertex<Local> origem, destino;
     //private String tipoJogo;
     private EstrategiaCalcularSolucao strategy;
 
     public MiniJogoImp(EstrategiaCalcularSolucao strategy) {
-        graph = new GraphImpl();
+        this.graph = new GraphImpl();
         this.strategy = strategy;
+    }
+    
+    public MiniJogoImp(EstrategiaCalcularSolucao strategy, Graph<Local, Ligacao> graph, Vertex<Local> origem, Vertex<Local> destino){
+        this.graph = graph;
+        this.strategy = strategy;
+        this.origem = origem;
+        this.destino = destino;
     }
     
     //Talvez por isto no main
     
+
     public void selecionarOrigemDestino(){
-        Iterable<Vertex<V>> vertices = graph.vertices();
-        Iterator<Vertex<V>> iterator = vertices.iterator();
+        Iterable<Vertex<Local>> vertices = graph.vertices();
+        Iterator<Vertex<Local>> iterator = vertices.iterator();
         boolean first = true;
         while(iterator.hasNext()){
             if(first){
@@ -43,11 +51,11 @@ public class MiniJogoImp<V, E> implements MiniJogo<V, E>{
         }
     }
     
-    public Vertex<V> getOrigem(){
+    public Vertex<Local> getOrigem(){
         return origem;
     }
     
-    public Vertex<V> getDestino(){
+    public Vertex<Local> getDestino(){
         return destino;
     }
     
@@ -56,18 +64,20 @@ public class MiniJogoImp<V, E> implements MiniJogo<V, E>{
     }
     
     @Override
-    public Edge<E, V> insertEdge(V elem1, V elem2, E o){
+    public Edge<Ligacao, Local> insertEdge(Local elem1, Local elem2, Ligacao o){
         return graph.insertEdge(elem1, elem2, o);
     }
     
     @Override
-    public Vertex<V> insertVertex(V elem){
+    public Vertex<Local> insertVertex(Local elem){
         return graph.insertVertex(elem);
+
     }
     
-    public Iterable<Edge<E, V>> calcularSolucao(){
-        return strategy.encontrarSolucao(graph, origem, destino);
-    }
+//    public Iterable<Edge<Ligacao, Local>> calcularSolucao(){
+//        return strategy.encontrarSolucao(graph, origem, destino);
+//
+//    }
     
 //    @Override
 //    public Iterable<Edge<E, V>> encontrarCaminhoCurto() {
