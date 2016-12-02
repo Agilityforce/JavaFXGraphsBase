@@ -13,10 +13,10 @@ import javafxgraphs.tad.Vertex;
  *
  * @author Rodrigo
  */
-public class CalcularMaisBarato<E, V> implements EstrategiaCalcularSolucao<E, V> {
+public class CalcularMaisBarato<Ligacao, Local> implements EstrategiaCalcularSolucao<Ligacao, Local> {
     
     @Override
-    public Iterable<Edge<E, V>> encontrarSolucao(Graph graph, Vertex<V> origem, Vertex<V> destino){
+    public Iterable<Edge<Ligacao, Local>> encontrarSolucao(Graph<Local, Ligacao> graph, Vertex<Local> origem, Vertex<Local> destino){
         if(graph == null || origem == null || destino == null){
             return null;
         }
