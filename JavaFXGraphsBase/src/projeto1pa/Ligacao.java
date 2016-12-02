@@ -22,6 +22,14 @@ public class Ligacao{
         this.preco = preco;
     }
     
+    public int getDistancia(){
+        return distancia;
+    }
+    
+    public double getPreco(){
+        return preco;
+    }
+    
     @Override
     public String toString(){
         return nomeLigacao;
