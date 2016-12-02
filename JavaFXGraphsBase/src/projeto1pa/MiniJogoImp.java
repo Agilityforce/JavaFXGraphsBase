@@ -56,10 +56,6 @@ public class MiniJogoImp implements MiniJogo<Local, Ligacao>{
         return destino;
     }
     
-    public void setStrategy(EstrategiaCalcularSolucao strategy){
-        this.strategy = strategy;
-    }
-    
     @Override
     public Edge<Ligacao, Local> insertEdge(Local elem1, Local elem2, Ligacao o){
         return graph.insertEdge(elem1, elem2, o);
@@ -70,6 +66,12 @@ public class MiniJogoImp implements MiniJogo<Local, Ligacao>{
         return graph.insertVertex(elem);
     }
     
+    @Override
+    public void setStrategy(EstrategiaCalcularSolucao strategy){
+        this.strategy = strategy;
+    }
+    
+    @Override
     public Iterable<Edge<Ligacao, Local>> calcularSolucao(){
         return strategy.encontrarSolucao(graph, origem, destino);
     }
