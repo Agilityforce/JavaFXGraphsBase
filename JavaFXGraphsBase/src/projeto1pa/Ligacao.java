@@ -13,12 +13,16 @@ public class Ligacao{
     
     private String nomeLigacao;
     private int distancia;
-    private int preco;
+    private double preco;
     private boolean visitado;
 
-    public Ligacao(String nomeLigacao, int distancia, int preco) {
-        this.distancia = distancia;
-        this.preco = preco;
+    public Ligacao(String nomeLigacao, int distancia, double preco) throws IllegalArgumentException{
+        if(distancia <= 0 || preco < 0){
+            throw new IllegalArgumentException("Argumentos invalidos.");
+        }else{
+            this.distancia = distancia;
+            this.preco = preco;
+        }
         visitado = false;
     }
     

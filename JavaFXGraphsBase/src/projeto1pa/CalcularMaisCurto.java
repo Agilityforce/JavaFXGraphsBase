@@ -5,6 +5,8 @@
  */
 package projeto1pa;
 
+import com.sun.javafx.scene.control.skin.VirtualFlow;
+import java.util.ArrayList;
 import java.util.Iterator;
 import javafxgraphs.tad.Edge;
 import javafxgraphs.tad.Graph;
@@ -18,16 +20,51 @@ public class CalcularMaisCurto implements EstrategiaCalcularSolucao<Ligacao, Loc
     
     @Override
     public Iterable<Edge<Ligacao, Local>> encontrarSolucao(Graph<Local, Ligacao> graph, Vertex<Local> origem, Vertex<Local> destino){
-        if(graph == null || origem == null || destino == null){
-            return null;
-        }
+        ArrayList<Edge<Ligacao, Local>> queue = new ArrayList<>();
         Iterable<Edge<Ligacao, Local>> iterable = graph.incidentEdges(origem);
-        Iterator<Edge<Ligacao, Local>> iterator = iterable.iterator();
-        while(iterator.hasNext()){
-            Ligacao ligacao = iterator.next().element();
-            
-            
+        //Iterator<Edge<Ligacao, Local>> iterator = iterable.iterator();
+        
+        for(Edge<Ligacao, Local> e : graph.edges()){
+            e.element().setVisitado(false);
+            queue.add(e);
         }
+        //distancia = 0 ao 1º vertice
+        //parent = null ao 1º vertice
+        
+        /*
+        for(Edge<Ligacao, Local> e : graph.edges()){
+            e.element().setVisitado(false);
+            e.vertices()[0].element().setVisitado(false);
+            e.vertices()[1].element().setVisitado(false);
+        }*/
+        
+        Vertex<Local> current = origem;
+        Edge<Ligacao, Local> curto = removeMin(queue);
+        
+        while(!queue.isEmpty()){
+            if(current.element().getVisitado()){
+                current = graph.opposite(current, curto);
+            }
+            
+            for(Edge<Ligacao, Local> e : graph.incidentEdges(current)){
+                if(graph.areAdjacent(current, graph.opposite(current, e))){
+                    // Fazer update da distancia menor nos vertices
+                }
+            }
+        }
+        
         return null;
+    }
+    
+    private Edge<Ligacao, Local> removeMin(ArrayList<Edge<Ligacao, Local>> queue){
+        Edge<Ligacao, Local> edge = queue.remove(0);
+        int menorDistancia = edge.element().getDistancia();
+        for(Edge<Ligacao, Local> e : queue){
+            int eDistancia = e.element().getDistancia();
+            if(eDistancia < menorDistancia){
+                edge = e;
+            }
+        }
+        return edge;
     }
 }
