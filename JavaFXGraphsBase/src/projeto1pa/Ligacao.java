@@ -11,15 +11,25 @@ package projeto1pa;
  */
 public class Ligacao{
     
-    private String TipoLigacao;
+    private String tipoLigacao;
     private String nomeLigacao;
     private int distancia;
     private int preco;
+    private boolean visitado;
 
-    public Ligacao(String TipoLigacao, String nomeLigacao, int distancia, int preco) {
-        this.TipoLigacao = TipoLigacao;      
+    public Ligacao(String tipoLigacao, String nomeLigacao, int distancia, int preco) {
+        this.tipoLigacao = tipoLigacao;      
         this.distancia = distancia;
         this.preco = preco;
+        visitado = false;
+    }
+    
+    public void setVisitado(boolean visitado){
+        this.visitado = visitado;
+    }
+    
+    public boolean getVisitado(){
+        return visitado;
     }
     
     public int getDistancia(){
