@@ -14,10 +14,20 @@ public class Ligacao{
     private String nomeLigacao;
     private int distancia;
     private int preco;
+    private boolean visitado;
 
     public Ligacao(String nomeLigacao, int distancia, int preco) {
         this.distancia = distancia;
         this.preco = preco;
+        visitado = false;
+    }
+    
+    public void setVisitado(boolean visitado){
+        this.visitado = visitado;
+    }
+    
+    public boolean getVisitado(){
+        return visitado;
     }
     
     public int getDistancia(){
