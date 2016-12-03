@@ -12,9 +12,19 @@ package projeto1pa;
 public class Local {
     
     private String nomeLocal;
+    private boolean visitado;
     
     public Local(String nomeLocal){
         this.nomeLocal = nomeLocal;
+        visitado = false;
+    }
+    
+    public void setVisitado(boolean visitado){
+        this.visitado = visitado;
+    }
+    
+    public boolean getVisitado(){
+        return visitado;
     }
     
     @Override
