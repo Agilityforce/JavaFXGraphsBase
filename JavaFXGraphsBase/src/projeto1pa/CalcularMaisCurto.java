@@ -7,7 +7,9 @@ package projeto1pa;
 
 import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import javafxgraphs.tad.Edge;
 import javafxgraphs.tad.Graph;
 import javafxgraphs.tad.Vertex;
@@ -23,6 +25,8 @@ public class CalcularMaisCurto implements EstrategiaCalcularSolucao<Ligacao, Loc
         ArrayList<Edge<Ligacao, Local>> queue = new ArrayList<>();
         Iterable<Edge<Ligacao, Local>> iterable = graph.incidentEdges(origem);
         //Iterator<Edge<Ligacao, Local>> iterator = iterable.iterator();
+        //Map<Vertex, Vertex> example = new HashMap<>(); guarda o vertex parent
+        //example.put(adj, current);
         
         for(Edge<Ligacao, Local> e : graph.edges()){
             e.element().setVisitado(false);

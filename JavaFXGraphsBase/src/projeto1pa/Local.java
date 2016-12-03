@@ -31,11 +31,18 @@ public class Local {
     public int getDistanciaOrigem(){
         return distanciaOrigem;
     }
+
+    public void setDistanciaOrigem(int distanciaOrigem) {
+        this.distanciaOrigem = distanciaOrigem;
+    }
     
     public double getPrecoOrigem(){
         return precoOrigem;
     }
-    
+
+    public void setPrecoOrigem(double precoOrigem) {
+        this.precoOrigem = precoOrigem;
+    }
     
     @Override
     public String toString(){
