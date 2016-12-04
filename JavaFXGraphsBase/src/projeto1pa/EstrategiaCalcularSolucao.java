@@ -15,5 +15,6 @@ import javafxgraphs.tad.Vertex;
  */
 public interface EstrategiaCalcularSolucao<E, V> {
     
-    public Iterable<Edge<E, V>> encontrarSolucao(Graph<V, E> graph, Vertex<V> origem, Vertex<V> destino);
+    public String dijktra(Graph<Local, Ligacao> graph, Vertex<Local> origem, Vertex<Local> destino);
+    //public void encontrarSolucao(Graph<V, E> graph, Vertex<V> origem);
 }
