@@ -56,8 +56,8 @@ public class Main extends Application {
         miniJogo.selecionarOrigemDestino();
         //miniJogo.calcularSolucao();
         
-        System.out.println(miniJogo.getOrigem().element().toString());
-        System.out.println(miniJogo.getDestino().element().toString());
+        System.out.println(miniJogo.getOrigem().element().getNomeLocal());
+        System.out.println(miniJogo.getDestino().element().getNomeLocal());
         
         //this should be moved to the implementing class
         for (Edge<DummyType, DummyType> edge : myG.edges()) {
