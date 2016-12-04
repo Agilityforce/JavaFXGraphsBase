@@ -14,7 +14,6 @@ public class Ligacao{
     private String nomeLigacao;
     private int distancia;
     private double preco;
-    private boolean visitado;
 
     public Ligacao(String nomeLigacao, int distancia, double preco) throws IllegalArgumentException{
         if(distancia <= 0 || preco < 0){
@@ -23,15 +22,10 @@ public class Ligacao{
             this.distancia = distancia;
             this.preco = preco;
         }
-        visitado = false;
     }
-    
-    public void setVisitado(boolean visitado){
-        this.visitado = visitado;
-    }
-    
-    public boolean getVisitado(){
-        return visitado;
+
+    public String getNomeLigacao() {
+        return nomeLigacao;
     }
     
     public int getDistancia(){
@@ -40,10 +34,5 @@ public class Ligacao{
     
     public double getPreco(){
         return preco;
-    }
-    
-    @Override
-    public String toString(){
-        return nomeLigacao;
     }
 }
