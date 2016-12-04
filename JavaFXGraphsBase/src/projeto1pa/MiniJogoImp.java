@@ -72,7 +72,7 @@ public class MiniJogoImp implements MiniJogo<Local, Ligacao>{
     }
     
     @Override
-    public Iterable<Edge<Ligacao, Local>> calcularSolucao(){
-        return strategy.encontrarSolucao(graph, origem, destino);
+    public String calcularSolucao(){
+        return strategy.dijktra(graph, origem, destino);
     }
 }
