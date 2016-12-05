@@ -26,11 +26,11 @@ public class MiniJogoImp implements MiniJogo<Local, Ligacao>{
         this.strategy = strategy;
     }
     
-    public MiniJogoImp(EstrategiaCalcularSolucao strategy, Graph<Local, Ligacao> graph, Vertex<Local> origem, Vertex<Local> destino){
+    public MiniJogoImp(EstrategiaCalcularSolucao strategy, Local origem, Local destino){
         this.strategy = strategy;
-        this.graph = graph;
-        this.origem = origem;
-        this.destino = destino;
+        graph = new GraphImpl();
+        this.origem = insertVertex(origem);
+        this.destino = insertVertex(destino);
     }    
 
     public void selecionarOrigemDestino(){
