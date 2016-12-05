@@ -82,6 +82,7 @@ public class Main extends Application {
         
         System.out.println(miniJogo.getOrigem().element().getNomeLocal());
         System.out.println(miniJogo.getDestino().element().getNomeLocal());
+        System.out.println("troll");
         
         /*
         //this should be moved to the implementing class
