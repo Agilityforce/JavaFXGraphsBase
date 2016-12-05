@@ -17,5 +17,5 @@ public interface MiniJogo<V, E> {
     public Edge<E, V> insertEdge(Local elem1, Local elem2, Ligacao o);
     public Vertex<V> insertVertex(V elem);
     public void setStrategy(EstrategiaCalcularSolucao strategy);
-    public Iterable<Edge<Ligacao, Local>> calcularSolucao();
+    public String calcularSolucao();
 }

@@ -5,20 +5,28 @@
  */
 package projeto1pa;
 
+import javafxgraphs.tad.Vertex;
+
 /**
  *
  * @author rmlai
  */
-public class Local {
+public class Local {   
     
     private String nomeLocal;
+    private boolean visitado;
+    private Vertex<Local> parent;
     private int distanciaOrigem;
     private double precoOrigem;
-    private boolean visitado;
     
     public Local(String nomeLocal){
         this.nomeLocal = nomeLocal;
         visitado = false;
+        parent = null;
+    }
+
+    public String getNomeLocal() {
+        return nomeLocal;
     }
     
     public void setVisitado(boolean visitado){
@@ -28,6 +36,15 @@ public class Local {
     public boolean getVisitado(){
         return visitado;
     }
+
+    public void setParent(Vertex<Local> parent) {
+        this.parent = parent;
+    }
+
+    public Vertex<Local> getParent() {
+        return parent;
+    }
+    
     public int getDistanciaOrigem(){
         return distanciaOrigem;
     }
@@ -42,10 +59,5 @@ public class Local {
 
     public void setPrecoOrigem(double precoOrigem) {
         this.precoOrigem = precoOrigem;
-    }
-    
-    @Override
-    public String toString(){
-        return nomeLocal;
     }
 }

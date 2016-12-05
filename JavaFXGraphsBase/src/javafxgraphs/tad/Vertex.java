@@ -10,5 +10,5 @@ package javafxgraphs.tad;
  * @author patricia.macedo
  */
 public interface Vertex<V> {
-    public V element()throws InvalidEdgeException;
+    public V element()throws InvalidVertexException;
 }

@@ -7,7 +7,6 @@ package projeto1pa;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import javafxgraphs.tad.Edge;
 import javafxgraphs.tad.Graph;
@@ -19,55 +18,90 @@ import javafxgraphs.tad.Vertex;
  */
 public class CalcularMaisCurto implements EstrategiaCalcularSolucao<Ligacao, Local> {
     
-    @Override
-    public Iterable<Edge<Ligacao, Local>> encontrarSolucao(Graph<Local, Ligacao> graph, Vertex<Local> origem, Vertex<Local> destino){
-        ArrayList<Edge<Ligacao, Local>> queue = new ArrayList<>();
-        Iterable<Edge<Ligacao, Local>> iterable = graph.incidentEdges(origem);
-        //Iterator<Edge<Ligacao, Local>> iterator = iterable.iterator();
-        //Map<Vertex, Vertex> example = new HashMap<>(); guarda o vertex parent
-        //example.put(adj, current);
+    private Graph<Local, Ligacao> graph;
+    private Vertex<Local> origem;
+    private int valorSolucao;
+    
+    private void encontrarSolucao(Graph<Local, Ligacao> graph, Vertex<Local> origem){
+        this.graph = graph;
+        this.origem = origem; 
         
-        for(Edge<Ligacao, Local> e : graph.edges()){
-            e.element().setVisitado(false);
-            queue.add(e);
+        ArrayList<Vertex<Local>> queue = new ArrayList<>();
+        Map<Vertex, Vertex> parents = new HashMap<>();
+        Local elemOrigem = origem.element();
+        
+        for(Vertex<Local> v : graph.vertices()){
+            Local elemV = v.element();
+            if(v.equals(origem)){
+                elemOrigem.setDistanciaOrigem(0);
+                parents.put(origem, null);
+            }else{
+                elemV.setDistanciaOrigem(Integer.MAX_VALUE);
+            }
+            elemV.setVisitado(false);
+            queue.add(v);
         }
-        //distancia = 0 ao 1º vertice
-        //parent = null ao 1º vertice
-        
-        /*
-        for(Edge<Ligacao, Local> e : graph.edges()){
-            e.element().setVisitado(false);
-            e.vertices()[0].element().setVisitado(false);
-            e.vertices()[1].element().setVisitado(false);
-        }*/
-        
-        Vertex<Local> current = origem;
-        Edge<Ligacao, Local> curto = removeMin(queue);
         
         while(!queue.isEmpty()){
-            if(current.element().getVisitado()){
-                current = graph.opposite(current, curto);
-            }
+            Vertex<Local> curto = removeMin(queue);
+            Local elemCurto = curto.element();
+            //System.out.println("");
+            //System.out.println(elemCurto.getNomeLocal());
+            //System.out.println("Vertices adj: ");
             
-            for(Edge<Ligacao, Local> e : graph.incidentEdges(current)){
-                if(graph.areAdjacent(current, graph.opposite(current, e))){
-                    // Fazer update da distancia menor nos vertices
+            for(Edge<Ligacao, Local> e : graph.incidentEdges(curto)){
+                Ligacao elemE = e.element();
+                Vertex<Local> adj = graph.opposite(curto, e);
+                Local elemAdj = adj.element();
+                //System.out.println("Vou testar o " + elemAdj.getNomeLocal());
+                
+                if(graph.areAdjacent(curto, adj)){
+                    if(!elemAdj.getVisitado()){
+                        int distancia = elemCurto.getDistanciaOrigem() + elemE.getDistancia();
+                        //System.out.println("Total: " + distancia);
+                        //System.out.println("Ligaca: " + elemE.getDistancia());
+                        if(distancia < elemAdj.getDistanciaOrigem()){
+                            //System.out.println("- " + elemAdj.getNomeLocal());
+                            elemAdj.setDistanciaOrigem(distancia);
+                            parents.put(adj, curto);
+                        }
+                    }
                 }
             }
+            elemCurto.setVisitado(true);
         }
-        
-        return null;
     }
     
-    private Edge<Ligacao, Local> removeMin(ArrayList<Edge<Ligacao, Local>> queue){
-        Edge<Ligacao, Local> edge = queue.remove(0);
-        int menorDistancia = edge.element().getDistancia();
-        for(Edge<Ligacao, Local> e : queue){
-            int eDistancia = e.element().getDistancia();
-            if(eDistancia < menorDistancia){
-                edge = e;
+    private Vertex<Local> removeMin(ArrayList<Vertex<Local>> queue){
+        Vertex<Local> vertex = null;
+        int menorDistancia = Integer.MAX_VALUE;
+        
+        for(Vertex<Local> v : queue){
+            int distV = v.element().getDistanciaOrigem();
+            if(distV < menorDistancia){
+                menorDistancia = distV;
+                vertex = v;
             }
         }
-        return edge;
+        int pos = queue.lastIndexOf(vertex);
+        return queue.remove(pos);
+    }
+    
+    @Override
+    public String dijktra(Graph<Local, Ligacao> graph, Vertex<Local> origem, Vertex<Local> destino){
+        encontrarSolucao(graph, origem);
+        
+        Vertex<Local> atual = destino;
+        Local elemAtual = destino.element();
+        
+        String str = "Custo do caminho mais curto: " + elemAtual.getDistanciaOrigem();
+        str = str + "\nCaminho mais curto: ";
+        String strAux = elemAtual.getNomeLocal();
+        
+        while(atual != origem){
+            atual = elemAtual.getParent();
+            strAux = elemAtual.getNomeLocal() + " -> " + strAux;
+        }
+        return str + strAux;
     }
 }

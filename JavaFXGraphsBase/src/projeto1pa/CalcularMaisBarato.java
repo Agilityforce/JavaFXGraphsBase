@@ -15,11 +15,19 @@ import javafxgraphs.tad.Vertex;
  */
 public class CalcularMaisBarato implements EstrategiaCalcularSolucao<Ligacao, Local> {
     
+    private Graph<Local, Ligacao> graph;
+    private Vertex<Local> origem;
+    private int valorSolucao;
+    
+    private void encontrarSolucao(Graph<Local, Ligacao> graph, Vertex<Local> origem){
+        this.graph = graph;
+        this.origem = origem; 
+        
+    }
+
     @Override
-    public Iterable<Edge<Ligacao, Local>> encontrarSolucao(Graph<Local, Ligacao> graph, Vertex<Local> origem, Vertex<Local> destino){
-        if(graph == null || origem == null || destino == null){
-            return null;
-        }
-        return null;
+    public String dijktra(Graph<Local, Ligacao> graph, Vertex<Local> origem, Vertex<Local> destino) {
+        encontrarSolucao(graph, origem);
+        return "";
     }
 }
