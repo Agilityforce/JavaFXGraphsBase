@@ -16,7 +16,8 @@ public class Ligacao{
     private double preco;
 
     public Ligacao(String nomeLigacao, int distancia, double preco) throws IllegalArgumentException{
-        if(distancia <= 0 || preco < 0){
+        this.nomeLigacao = nomeLigacao;
+        if(distancia <= 0 || preco <= 0){
             throw new IllegalArgumentException("Argumentos invalidos.");
         }else{
             this.distancia = distancia;
