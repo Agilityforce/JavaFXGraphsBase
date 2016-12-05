@@ -33,6 +33,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
        
 //        Implementation of Graph needed!!!
+        /*
         Graph<DummyType, DummyType> myG = new GraphImpl<>(); 
       
         Vertex<DummyType> vA = myG.insertVertex(new DummyType("A"));
@@ -44,40 +45,45 @@ public class Main extends Application {
         myG.insertEdge(vA, vB, new DummyType("AB2")); //second edge
         myG.insertEdge(vA, vC, new DummyType("AC"));
         myG.insertEdge(vA, vD, new DummyType("AD"));
+        */
         
-        
-        MiniJogoImp miniJogo = new MiniJogoImp(new CalcularMaisCurto());
-        
-        Graph<Local, Ligacao> graph = new GraphImpl<>();
+        /*-------------------------------*/
         
         Local local1 = new Local("A");
-        Local local2 = new Local("B");
+        Local local2 = new Local("B");     
+        
+        MiniJogoImp miniJogo = new MiniJogoImp(new CalcularMaisCurto(), local1, local2);
+        
         Local local3 = new Local("C");
         Local local4 = new Local("D");
         
         Ligacao ligacao1 = new Ligacao("AB", 10, 10);
         Ligacao ligacao2 = new Ligacao("BC", 15, 10);
         Ligacao ligacao3 = new Ligacao("CD", 20, 10);
-        Ligacao ligacao4 = new Ligacao("DA", 25, 10);
+        Ligacao ligacao4 = new Ligacao("DA", 25, 10);   
         
-        Vertex<Local> vertex1 = miniJogo.insertVertex(local1);
-        Vertex<Local> vertex2 = miniJogo.insertVertex(local2);
-        Vertex<Local> vertex3 = miniJogo.insertVertex(local3);
-        Vertex<Local> vertex4 = miniJogo.insertVertex(local4);
+        miniJogo.insertVertex(local3);
+        miniJogo.insertVertex(local4);
         
-        Edge<Ligacao, Local> edge1 = miniJogo.insertEdge(local1, local2, ligacao1);
-        Edge<Ligacao, Local> edge2 = miniJogo.insertEdge(local2, local3, ligacao2);
-        Edge<Ligacao, Local> edge3 = miniJogo.insertEdge(local3, local4, ligacao3);
-        Edge<Ligacao, Local> edge4 = miniJogo.insertEdge(local4, local1, ligacao4);
+        miniJogo.insertEdge(local1, local2, ligacao1);
+        miniJogo.insertEdge(local2, local3, ligacao2);
+        miniJogo.insertEdge(local3, local4, ligacao3);
+        miniJogo.insertEdge(local4, local1, ligacao4);
         
-        //CalcularMaisCurto curto = new CalcularMaisCurto();
+        /*
+        miniJogo.insertVertex(new Local("A"));
+        miniJogo.insertVertex(new Local("B"));
+        miniJogo.insertVertex(new Local("C"));
+        miniJogo.insertVertex(new Local("D"));
+        */
         
-        miniJogo.selecionarOrigemDestino();
-        Iterable<Edge<Ligacao, Local>> solucao = miniJogo.calcularSolucao();
+        //miniJogo.selecionarOrigemDestino();
+        System.out.println(miniJogo.calcularSolucao());
         
-//        System.out.println(miniJogo.getOrigem().element().toString());
-//        System.out.println(miniJogo.getDestino().element().toString());
+        System.out.println(miniJogo.getOrigem().element().getNomeLocal());
+        System.out.println(miniJogo.getDestino().element().getNomeLocal());
         
+        /*
         //this should be moved to the implementing class
         for (Edge<Ligacao, Local> ed : solucao) {
             System.out.println(ed.element().toString());
@@ -104,6 +110,7 @@ public class Main extends Application {
         primaryStage.setTitle("Graph!");
         primaryStage.setScene(scene);
         primaryStage.show();
+        */
     }
     
     /**
