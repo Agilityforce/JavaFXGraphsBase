@@ -45,16 +45,23 @@ public class CalcularMaisCurto implements EstrategiaCalcularSolucao<Ligacao, Loc
         while(!queue.isEmpty()){
             Vertex<Local> curto = removeMin(queue);
             Local elemCurto = curto.element();
+            //System.out.println("");
+            //System.out.println(elemCurto.getNomeLocal());
+            //System.out.println("Vertices adj: ");
             
             for(Edge<Ligacao, Local> e : graph.incidentEdges(curto)){
                 Ligacao elemE = e.element();
                 Vertex<Local> adj = graph.opposite(curto, e);
                 Local elemAdj = adj.element();
+                //System.out.println("Vou testar o " + elemAdj.getNomeLocal());
                 
                 if(graph.areAdjacent(curto, adj)){
                     if(!elemAdj.getVisitado()){
                         int distancia = elemCurto.getDistanciaOrigem() + elemE.getDistancia();
+                        //System.out.println("Total: " + distancia);
+                        //System.out.println("Ligaca: " + elemE.getDistancia());
                         if(distancia < elemAdj.getDistanciaOrigem()){
+                            //System.out.println("- " + elemAdj.getNomeLocal());
                             elemAdj.setDistanciaOrigem(distancia);
                             parents.put(adj, curto);
                         }
@@ -92,9 +99,9 @@ public class CalcularMaisCurto implements EstrategiaCalcularSolucao<Ligacao, Loc
         String strAux = elemAtual.getNomeLocal();
         
         while(atual != origem){
-            
+            atual = elemAtual.getParent();
+            strAux = elemAtual.getNomeLocal() + " -> " + strAux;
         }
-        
-        return "";
+        return str + strAux;
     }
 }
