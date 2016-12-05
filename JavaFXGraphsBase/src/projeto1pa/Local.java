@@ -12,6 +12,8 @@ package projeto1pa;
 public class Local {
     
     private String nomeLocal;
+    private int distanciaOrigem;
+    private double precoOrigem;
     private boolean visitado;
     
     public Local(String nomeLocal){
@@ -25,6 +27,21 @@ public class Local {
     
     public boolean getVisitado(){
         return visitado;
+    }
+    public int getDistanciaOrigem(){
+        return distanciaOrigem;
+    }
+
+    public void setDistanciaOrigem(int distanciaOrigem) {
+        this.distanciaOrigem = distanciaOrigem;
+    }
+    
+    public double getPrecoOrigem(){
+        return precoOrigem;
+    }
+
+    public void setPrecoOrigem(double precoOrigem) {
+        this.precoOrigem = precoOrigem;
     }
     
     @Override
